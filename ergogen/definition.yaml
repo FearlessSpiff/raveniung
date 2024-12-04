@@ -1,13 +1,14 @@
 units:
   angle: -8
+  P: 0.75U
 points:
   zones:
     matrix:
       rotate: angle
       mirror: &mirror
-        ref: matrix_inner_bottom
+        ref: matrix_inner_home
         shift: [0, -U]
-        distance: 2.25U
+        distance: 3U
       columns:
         outer:
           key:
@@ -18,7 +19,6 @@ points:
               skip: true
         pinky:
           key:
-            stagger: 0.25U
             column_net: P5
             mirror.column_net: P8
           rows:
@@ -60,18 +60,19 @@ points:
     thumb_middle:
       mirror: *mirror
       anchor:
-        ref: [matrix_inner_bottom, mirror_matrix_inner_bottom]
-        shift: [0.6U, -1.15U]
+        ref: matrix_inner_bottom
+        shift: [0.6U, -1.5U]
         rotate: -angle
       key:
         name: thumb_middle
         row_net: P16
         column_net: P6
+        rotate: angle
     thumb_reachy:
       mirror: *mirror
       anchor:
         ref: thumb_middle
-        shift: [-2.25U, 0.15U]
+        shift: [-1.25U, 0.15U]
         rotate: 2angle
       key:
         name: thumb_reachy
@@ -83,8 +84,8 @@ points:
     footprints:
       - type: mx
         nets:
-          from: =colrow
-          to: =column_net
+          from: "{{colrow}}"
+          to: "{{row_net}}"
         params.keycaps: true
       - type: diode
         anchor:
@@ -92,16 +93,79 @@ points:
         nets:
           from: =colrow
           to: =row_net
+outlines:
+  raw:
+    - what: rectangle
+      size: [U,U]
+      where: true
+  keys:
+    - what: rectangle
+      where: true
+      size: [U-0.5,U-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_outer_home
+          shift: [-P, P]
+        - ref: matrix_middle_top
+          shift: [-0.75U, P]
+        - ref: matrix_middle_top
+          shift: [0.75U, P]
+        - ref: matrix_inner_top
+          shift: [0, P]
+        - ref: mirror_matrix_inner_top
+          shift: [0, P]
+        - ref: mirror_matrix_middle_top
+          shift: [0.75U, P]
+        - ref: mirror_matrix_middle_top
+          shift: [-0.75U, P]
+        - ref: mirror_matrix_outer_home
+          shift: [-P, P]
+        - ref: mirror_matrix_outer_bottom
+          shift: [-P, -P]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0, -1.25U]
+        - ref: mirror_thumb_reachy
+          shift: [-0.75P, -P]
+        - ref: mirror_thumb_middle
+          shift: [-0.5U, -1.1P]
+        - ref: thumb_middle
+          shift: [-0.5U, -1.1P]
+        - ref: thumb_reachy
+          shift: [-0.75P, -P]
+        - ref: matrix_middle_bottom
+          shift: [0, -1.25U]
+        - ref: matrix_outer_bottom
+          shift: [-P, -P]
+  plate:
+    - name: board
+    - name: keys
+      operation: subtract
+      
 pcbs:
-  simple_reviung41:
+  raveniung:
     footprints:
-      - where: true
+      mx_switch:
         what: mx
+        where: true
         params:
-          from: =colrow
-          to: =row_net
-#- type: promicro
-#       anchor:
-#        - ref: [matrix_inner_top, mirror_matrix_inner_top]
-#         shift: [0, 22]
-#        rotate: angle
+          from: "{{row_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      mcu:
+        what: promicro
+        params:
+          orientation: "down"
+        where:
+          ref: matrix_inner_top
+          shift: [1.5U, 0]
+          rotate: -90-angle
