@@ -1,14 +1,17 @@
 units:
   angle: -8
-  P: 0.75U
+  P: 0.6U
 points:
   zones:
     matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
       rotate: angle
       mirror: &mirror
         ref: matrix_inner_home
         shift: [0, -U]
-        distance: 3U
+        distance: 70
       columns:
         outer:
           key:
@@ -61,12 +64,13 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_bottom
-        shift: [0.6U, -1.5U]
+        shift: [0.75U, -1.4U]
         rotate: -angle
       key:
         name: thumb_middle
         row_net: P16
-        column_net: P6
+        column_net: P4
+        mirror.column_net: D7
         rotate: angle
     thumb_reachy:
       mirror: *mirror
@@ -77,31 +81,17 @@ points:
       key:
         name: thumb_reachy
         row_net: P16
-        column_net: P20
-        mirror.column_net: P15
-
-  key:
-    footprints:
-      - type: mx
-        nets:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        params.keycaps: true
-      - type: diode
-        anchor:
-          shift: [0, -4.7]
-        nets:
-          from: =colrow
-          to: =row_net
+        column_net: P5
+        mirror.column_net: P7
 outlines:
   raw:
     - what: rectangle
-      size: [U,U]
+      size: [U, U]
       where: true
   keys:
     - what: rectangle
       where: true
-      size: [U-0.5,U-0.5]
+      size: [U-0.5, U-0.5]
   board:
     - what: polygon
       operation: stack
@@ -110,47 +100,54 @@ outlines:
         - ref: matrix_outer_home
           shift: [-P, P]
         - ref: matrix_middle_top
-          shift: [-0.75U, P]
+          shift: [-1.75P, P]
         - ref: matrix_middle_top
-          shift: [0.75U, P]
+          shift: [1.75P, P]
         - ref: matrix_inner_top
           shift: [0, P]
         - ref: mirror_matrix_inner_top
           shift: [0, P]
         - ref: mirror_matrix_middle_top
-          shift: [0.75U, P]
+          shift: [1.75P, P]
         - ref: mirror_matrix_middle_top
-          shift: [-0.75U, P]
+          shift: [-1.75P, P]
         - ref: mirror_matrix_outer_home
           shift: [-P, P]
         - ref: mirror_matrix_outer_bottom
           shift: [-P, -P]
         - ref: mirror_matrix_middle_bottom
-          shift: [0, -1.25U]
+          shift: [0, -2P]
         - ref: mirror_thumb_reachy
           shift: [-0.75P, -P]
         - ref: mirror_thumb_middle
-          shift: [-0.5U, -1.1P]
+          shift: [-0.5P, -1.2P]
         - ref: thumb_middle
-          shift: [-0.5U, -1.1P]
+          shift: [-0.5P, -1.2P]
         - ref: thumb_reachy
           shift: [-0.75P, -P]
         - ref: matrix_middle_bottom
-          shift: [0, -1.25U]
+          shift: [0, -2P]
         - ref: matrix_outer_bottom
           shift: [-P, -P]
   plate:
     - name: board
     - name: keys
       operation: subtract
-      
+
 pcbs:
   raveniung:
+    template: kicad8
+    outlines:
+      main:
+        outline: board
     footprints:
       mx_switch:
-        what: mx
+        what: ceoloide/switch_mx
         where: true
         params:
+          solder: true
+          hotswap: false
+          include_keycap: true
           from: "{{row_net}}"
           to: "{{colrow}}"
       diode:
@@ -162,10 +159,9 @@ pcbs:
         adjust:
           shift: [0, -5]
       mcu:
-        what: promicro
+        what: ceoloide/mcu_nice_nano
         params:
-          orientation: "down"
+          reverse_mount: true
         where:
-          ref: matrix_inner_top
-          shift: [1.5U, 0]
-          rotate: -90-angle
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [0, -5.1]
