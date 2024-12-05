@@ -50,16 +50,16 @@ points:
       rows:
         bottom:
           padding: U
-          row_net: P21
-          mirror.row_net: P18
+          row_net: P19
+          mirror.row_net: P14
         home:
           padding: U
           row_net: P20
           mirror.row_net: P15
         top:
           padding: U
-          row_net: P19
-          mirror.row_net: P14
+          row_net: P21
+          mirror.row_net: P18
     thumb_middle:
       mirror: *mirror
       anchor:
@@ -69,8 +69,8 @@ points:
       key:
         name: thumb_middle
         row_net: P16
-        column_net: P4
-        mirror.column_net: D7
+        column_net: P5
+        mirror.column_net: P6
         rotate: angle
     thumb_reachy:
       mirror: *mirror
@@ -81,7 +81,7 @@ points:
       key:
         name: thumb_reachy
         row_net: P16
-        column_net: P5
+        column_net: P4
         mirror.column_net: P7
 outlines:
   raw:
@@ -148,7 +148,7 @@ pcbs:
           solder: true
           hotswap: false
           include_keycap: true
-          from: "{{row_net}}"
+          from: "{{column_net}}"
           to: "{{colrow}}"
       diode:
         what: diode
