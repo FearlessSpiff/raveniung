@@ -88,10 +88,14 @@ outlines:
     - what: rectangle
       size: [U, U]
       where: true
-  keys:
+  keycaps:
     - what: rectangle
       where: true
       size: [U-0.5, U-0.5]
+  keys:
+    - what: rectangle
+      where: true
+      size: [14, 14]
   board:
     - what: polygon
       operation: stack
@@ -129,9 +133,13 @@ outlines:
           shift: [0, -2P]
         - ref: matrix_outer_bottom
           shift: [-P, -P]
-  plate:
+  top-plate:
     - name: board
     - name: keys
+      operation: subtract
+  preview:
+    - name: board
+    - name: keycaps
       operation: subtract
 
 pcbs:
@@ -141,7 +149,7 @@ pcbs:
       main:
         outline: board
     footprints:
-      mx_switch:
+      mx-switches:
         what: ceoloide/switch_mx
         where: true
         params:
@@ -150,7 +158,7 @@ pcbs:
           include_keycap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
-      diode:
+      diodes:
         what: diode
         where: true
         params:
@@ -164,4 +172,10 @@ pcbs:
           reverse_mount: true
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [0, -5.1]
+          shift: [0, -5.15]
+      power-switch:
+        what: ceoloide/power_switch_smd_side
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [-17, 9.4]
+          rotate: 90
