@@ -1,5 +1,5 @@
 units:
-  angle: -8
+  angle: -10
   P: 0.6U
 points:
   zones:
@@ -87,7 +87,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_home
-        shift: [15, 11]
+        shift: [15, 9]
       key:
         name: standoff-top
         width: 1
@@ -96,7 +96,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_bottom
-        shift: [15, -7]
+        shift: [15, -8]
       key:
         name: standoff-bottom
         width: 1
@@ -161,9 +161,9 @@ outlines:
         - ref: mirror_matrix_inner_top
           shift: [P, U]
         - ref: mirror_matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.1P]
         - ref: matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.1P]
         - ref: matrix_inner_top
           shift: [P, U]
   cirque-case:
@@ -171,7 +171,7 @@ outlines:
       radius: 24
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [0, -12]
+        shift: [0, -15]
   cover:
     - what: polygon
       operation: stack
@@ -199,24 +199,24 @@ outlines:
           shift: [P, 0]
         - ref: matrix_inner_home
           shift: [P, 0]
-    - name: cirque-case
-      operation: stack
+    #- name: cirque-case
+    #  operation: stack
     - what: circle
       radius: 1
       where: standoff-top
-      operation: stack
+      operation: subtract
     - what: circle
       radius: 1
       where: mirror_standoff-top
-      operation: stack
+      operation: subtract
     - what: circle
       radius: 1
       where: standoff-bottom
-      operation: stack
+      operation: subtract
     - what: circle
       radius: 1
       where: mirror_standoff-bottom
-      operation: stack
+      operation: subtract
   top-plate:
     - name: board
     - name: keys
