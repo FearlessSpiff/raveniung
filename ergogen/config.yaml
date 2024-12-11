@@ -11,7 +11,7 @@ points:
       mirror: &mirror
         ref: matrix_inner_home
         shift: [0, -U]
-        distance: 70
+        distance: 74
       columns:
         outer:
           key:
@@ -83,18 +83,36 @@ points:
         row_net: ROW6
         column_net: COL0
         mirror.column_net: COL3
+    standoff-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_home
+        shift: [15, 11]
+      key:
+        name: standoff-top
+        width: 1
+        height: 1
+    standoff-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [15, -7]
+      key:
+        name: standoff-bottom
+        width: 1
+        height: 1
 outlines:
-  raw:
-    - what: rectangle
-      size: [U, U]
-      where: true
   keycaps:
     - what: rectangle
-      where: true
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
       size: [U-0.5, U-0.5]
   keys:
     - what: rectangle
-      where: true
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
       size: [14, 14]
   board:
     - what: polygon
@@ -148,6 +166,12 @@ outlines:
           shift: [P, -P]
         - ref: matrix_inner_top
           shift: [P, U]
+  cirque-case:
+    - what: circle
+      radius: 24
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -12]
   cover:
     - what: polygon
       operation: stack
@@ -175,6 +199,24 @@ outlines:
           shift: [P, 0]
         - ref: matrix_inner_home
           shift: [P, 0]
+    - name: cirque-case
+      operation: stack
+    - what: circle
+      radius: 1
+      where: standoff-top
+      operation: stack
+    - what: circle
+      radius: 1
+      where: mirror_standoff-top
+      operation: stack
+    - what: circle
+      radius: 1
+      where: standoff-bottom
+      operation: stack
+    - what: circle
+      radius: 1
+      where: mirror_standoff-bottom
+      operation: stack
   top-plate:
     - name: board
     - name: keys
@@ -237,19 +279,19 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -5.15]
-      ffc-12pin:
-        what: ceoloide/backlog/tildewill/connector_ffc_12p
-        params:
-          P1: SCK
-          P2: MISO
-          P3: CS
-          P4: DR
-          P5: MOSI
-          P11: GND
-          P12: VCC
-        where:
-          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-          shift: [0, -12]
+      #ffc-12pin:
+      #    what: ceoloide/backlog/tildewill/connector_ffc_12p
+      #params:
+      #  P1: SCK
+      #P2: MISO
+      # P3: CS
+      #P4: DR
+      #P5: MOSI
+      #P11: GND
+      #P12: VCC
+      #where:
+      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+      #shift: [0, -12]
       power-switch:
         what: ceoloide/power_switch_smd_side
         params:
@@ -266,17 +308,17 @@ pcbs:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [-14, 8.5]
           rotate: 180
-      battery-plus:
-        what: ceoloide/backlog/mrzealot/pad
-        params:
-          net: BAT_P
-        where:
-          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-          shift: [-2, 0]
-      battery-minus:
-        what: ceoloide/backlog/mrzealot/pad
-        params:
-          net: GND
-        where:
-          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-          shift: [2, 0]
+      #      battery-plus:
+      #  what: ceoloide/backlog/mrzealot/pad
+      #params:
+      #  net: BAT_P
+      # where:
+      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+      #shift: [-2, 0]
+      #battery-minus:
+      #  what: ceoloide/backlog/mrzealot/pad
+      #params:
+      #  net: GND
+      # where:
+      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+      # shift: [2, 0]
