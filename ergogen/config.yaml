@@ -15,51 +15,51 @@ points:
       columns:
         outer:
           key:
-            column_net: P4
-            mirror.column_net: P9
+            column_net: COL0
+            mirror.column_net: COL5
           rows:
             top:
               skip: true
         pinky:
           key:
-            column_net: P5
-            mirror.column_net: P8
+            column_net: COL1
+            mirror.column_net: COL4
           rows:
             top:
               skip: true
         ring:
           key:
             stagger: 0.25U
-            column_net: P6
-            mirror.column_net: P7
+            column_net: COL2
+            mirror.column_net: COL3
         middle:
           key:
             stagger: 0.25U
-            column_net: P7
-            mirror.column_net: P6
+            column_net: COL3
+            mirror.column_net: COL2
         index:
           key:
             stagger: -0.25U
-            column_net: P8
-            mirror.column_net: P5
+            column_net: COL4
+            mirror.column_net: COL1
         inner:
           key:
             stagger: -0.25U
-            column_net: P9
-            mirror.column_net: P4
+            column_net: COL5
+            mirror.column_net: COL0
       rows:
         bottom:
           padding: U
-          row_net: P19
-          mirror.row_net: P14
+          row_net: ROW2
+          mirror.row_net: ROW5
         home:
           padding: U
-          row_net: P20
-          mirror.row_net: P15
+          row_net: ROW1
+          mirror.row_net: ROW4
         top:
           padding: U
-          row_net: P21
-          mirror.row_net: P18
+          row_net: ROW0
+          mirror.row_net: ROW3
     thumb_middle:
       mirror: *mirror
       anchor:
@@ -68,9 +68,9 @@ points:
         rotate: -angle
       key:
         name: thumb_middle
-        row_net: P16
-        column_net: P5
-        mirror.column_net: P6
+        row_net: ROW6
+        column_net: COL1
+        mirror.column_net: COL2
         rotate: angle
     thumb_reachy:
       mirror: *mirror
@@ -80,9 +80,9 @@ points:
         rotate: 2angle
       key:
         name: thumb_reachy
-        row_net: P16
-        column_net: P4
-        mirror.column_net: P7
+        row_net: ROW6
+        column_net: COL0
+        mirror.column_net: COL3
 outlines:
   raw:
     - what: rectangle
@@ -133,15 +133,60 @@ outlines:
           shift: [0, -2P]
         - ref: matrix_outer_bottom
           shift: [-P, -P]
+  mcu-top-cutout:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_inner_top
+          shift: [P, U]
+        - ref: mirror_matrix_inner_top
+          shift: [P, U]
+        - ref: mirror_matrix_inner_bottom
+          shift: [P, -P]
+        - ref: matrix_inner_bottom
+          shift: [P, -P]
+        - ref: matrix_inner_top
+          shift: [P, U]
+  cover:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_inner_top
+          shift: [P, P]
+        - ref: mirror_matrix_inner_top
+          shift: [P, P]
+        - ref: mirror_matrix_inner_home
+          shift: [P, 0]
+        - ref: mirror_matrix_inner_bottom
+          shift: [P, -P]
+        - ref: mirror_thumb_middle
+          shift: [1.2P, P]
+        - ref: mirror_thumb_middle
+          shift: [P, -0.8P]
+        - ref: thumb_middle
+          shift: [P, -0.8P]
+        - ref: thumb_middle
+          shift: [1.2P, P]
+        - ref: matrix_inner_bottom
+          shift: [P, -P]
+        - ref: matrix_inner_bottom
+          shift: [P, 0]
+        - ref: matrix_inner_home
+          shift: [P, 0]
   top-plate:
     - name: board
     - name: keys
+      operation: subtract
+    - name: mcu-top-cutout
       operation: subtract
   preview:
     - name: board
     - name: keycaps
       operation: subtract
-
+    - name: cover
+      operation: stack
 pcbs:
   raveniung:
     template: kicad8
@@ -170,12 +215,68 @@ pcbs:
         what: ceoloide/mcu_nice_nano
         params:
           reverse_mount: true
+          show_silk_labels_on_both_sides: true
+          P0: SCK
+          P1: DR
+          P2: MOSI
+          P3: MISO
+          P4: CS
+          P5: COL0
+          P6: COL1
+          P7: COL2
+          P8: COL3
+          P9: COL4
+          P10: COL5
+          P21: ROW0
+          P20: ROW1
+          P19: ROW2
+          P18: ROW3
+          P15: ROW4
+          P14: ROW5
+          P16: ROW6
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -5.15]
+      ffc-12pin:
+        what: ceoloide/backlog/tildewill/connector_ffc_12p
+        params:
+          P1: SCK
+          P2: MISO
+          P3: CS
+          P4: DR
+          P5: MOSI
+          P11: GND
+          P12: VCC
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [0, -12]
       power-switch:
         what: ceoloide/power_switch_smd_side
+        params:
+          side: B
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [-17, 9.4]
+          shift: [0, 9.4]
           rotate: 90
+      reset-switch:
+        what: ceoloide/reset_switch_tht_top
+        params:
+          side: B
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [-14, 8.5]
+          rotate: 180
+      battery-plus:
+        what: ceoloide/backlog/mrzealot/pad
+        params:
+          net: BAT_P
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [-2, 0]
+      battery-minus:
+        what: ceoloide/backlog/mrzealot/pad
+        params:
+          net: GND
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [2, 0]
