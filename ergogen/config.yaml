@@ -101,6 +101,59 @@ points:
         name: standoff-bottom
         width: 1
         height: 1
+    mount-hole-middle:
+      anchor:
+        ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+        shift: [0, 0]
+      key:
+        name: mount-hole-middle
+        width: 1
+        height: 1
+    mount-hole-inner-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_top
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-inner-top
+        width: 1
+        height: 1
+    mount-hole-inner-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-inner-bottom
+        width: 1
+        height: 1
+    mount-hole-middle-home:
+      mirror: *mirror
+      anchor:
+        ref: matrix_middle_home
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-middle-home
+        width: 1
+        height: 1
+    mount-hole-pinky-home:
+      mirror: *mirror
+      anchor:
+        ref: matrix_pinky_home
+        shift: [-0.5U, 0.35U]
+      key:
+        name: mount-hole-pinky-home
+        width: 1
+        height: 1
+    mount-hole-pinky-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_pinky_bottom
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-pinky-bottom
+        width: 1
+        height: 1
 outlines:
   keycaps:
     - what: rectangle
@@ -222,6 +275,51 @@ outlines:
     - name: keys
       operation: subtract
     - name: mcu-top-cutout
+      operation: subtract
+      fillet: 1
+    - what: circle
+      radius: 1
+      where: mount-hole-middle
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mount-hole-inner-top
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mirror_mount-hole-inner-top
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mount-hole-inner-bottom
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mirror_mount-hole-inner-bottom
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mount-hole-middle-home
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mirror_mount-hole-middle-home
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mount-hole-pinky-home
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mirror_mount-hole-pinky-home
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mount-hole-pinky-bottom
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: mirror_mount-hole-pinky-bottom
       operation: subtract
   preview:
     - name: board
