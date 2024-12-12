@@ -328,19 +328,19 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -5.15]
-      #ffc-12pin:
-      #    what: ceoloide/backlog/tildewill/connector_ffc_12p
-      #params:
-      #  P1: SCK
-      #P2: MISO
-      # P3: CS
-      #P4: DR
-      #P5: MOSI
-      #P11: GND
-      #P12: VCC
-      #where:
-      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-      #shift: [0, -12]
+      ffc-12pin:
+        what: ceoloide/backlog/tildewill/connector_ffc_12p
+        params:
+          P1: SCK
+          P2: MISO
+          P3: CS
+          P4: DR
+          P5: MOSI
+          P11: GND
+          P12: VCC
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [0, -12]
       power-switch:
         what: ceoloide/power_switch_smd_side
         params:
@@ -357,17 +357,14 @@ pcbs:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [-14, 8.5]
           rotate: 180
-      #      battery-plus:
-      #  what: ceoloide/backlog/mrzealot/pad
-      #params:
-      #  net: BAT_P
-      # where:
-      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-      #shift: [-2, 0]
-      #battery-minus:
-      #  what: ceoloide/backlog/mrzealot/pad
-      #params:
-      #  net: GND
-      # where:
-      #  ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-      # shift: [2, 0]
+      battery-connector:
+        what: ceoloide/battery_connector_jst_ph_2
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [-14, 3]
+      mounting-holes:
+        what: ceoloide/mounting_hole_npth
+        where: /.*mount-hole.*/
+      standoffs:
+        what: ceoloide/mounting_hole_plated
+        where: /.*standoff.*/
