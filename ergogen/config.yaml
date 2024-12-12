@@ -368,6 +368,14 @@ pcbs:
       standoffs:
         what: ceoloide/mounting_hole_plated
         where: /.*standoff.*/
+      label:
+        what: ceoloide/utility_text
+        params:
+          text: raveniung ver0.1
+        where:
+          ref: mirror_thumb_reachy
+          shift: [-20, 1]
+          rotate: -40
   raveniung-top-plate:
     template: kicad8
     outlines:
@@ -377,3 +385,11 @@ pcbs:
       mounting-holes:
         what: ceoloide/mounting_hole_npth
         where: /.*mount-hole.*/
+      label:
+        what: ceoloide/utility_text
+        params:
+          text: raveniung ver0.1
+        where:
+          ref: mirror_thumb_reachy
+          shift: [-20, 1]
+          rotate: -40
