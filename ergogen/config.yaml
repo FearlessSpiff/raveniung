@@ -239,13 +239,13 @@ outlines:
         - ref: mirror_matrix_inner_bottom
           shift: [P, -P]
         - ref: mirror_thumb_middle
-          shift: [1.2P, P]
+          shift: [1P, P]
         - ref: mirror_thumb_middle
           shift: [P, -0.8P]
         - ref: thumb_middle
           shift: [P, -0.8P]
         - ref: thumb_middle
-          shift: [1.2P, P]
+          shift: [1P, P]
         - ref: matrix_inner_bottom
           shift: [P, -P]
         - ref: matrix_inner_bottom
