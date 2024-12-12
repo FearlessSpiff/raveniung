@@ -275,7 +275,7 @@ outlines:
     - name: cover
       operation: stack
 pcbs:
-  raveniung:
+  raveniung-board:
     template: kicad8
     outlines:
       main:
@@ -368,3 +368,12 @@ pcbs:
       standoffs:
         what: ceoloide/mounting_hole_plated
         where: /.*standoff.*/
+  raveniung-top-plate:
+    template: kicad8
+    outlines:
+      main:
+        outline: top-plate
+    footprints:
+      mounting-holes:
+        what: ceoloide/mounting_hole_npth
+        where: /.*mount-hole.*/
