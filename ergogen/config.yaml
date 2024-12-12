@@ -64,8 +64,8 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_bottom
-        shift: [0.75U, -1.4U]
-        rotate: -angle
+        shift: [0.75U, -1.5U]
+        rotate: 0
       key:
         name: thumb_middle
         row_net: ROW6
@@ -76,8 +76,8 @@ points:
       mirror: *mirror
       anchor:
         ref: thumb_middle
-        shift: [-1.25U, 0.15U]
-        rotate: 2angle
+        shift: [-1.1U, 0.1U]
+        rotate: 8
       key:
         name: thumb_reachy
         row_net: ROW6
@@ -195,9 +195,9 @@ outlines:
         - ref: mirror_thumb_reachy
           shift: [-0.75P, -P]
         - ref: mirror_thumb_middle
-          shift: [-0.5P, -1.2P]
+          shift: [0.5P, -1.2P]
         - ref: thumb_middle
-          shift: [-0.5P, -1.2P]
+          shift: [0.5P, -1.2P]
         - ref: thumb_reachy
           shift: [-0.75P, -P]
         - ref: matrix_middle_bottom
@@ -256,19 +256,7 @@ outlines:
     #  operation: stack
     - what: circle
       radius: 1
-      where: standoff-top
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_standoff-top
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: standoff-bottom
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_standoff-bottom
+      where: /.*standoff.*/
       operation: subtract
   top-plate:
     - name: board
@@ -276,50 +264,9 @@ outlines:
       operation: subtract
     - name: mcu-top-cutout
       operation: subtract
-      fillet: 1
     - what: circle
       radius: 1
-      where: mount-hole-middle
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mount-hole-inner-top
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_mount-hole-inner-top
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mount-hole-inner-bottom
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_mount-hole-inner-bottom
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mount-hole-middle-home
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_mount-hole-middle-home
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mount-hole-pinky-home
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_mount-hole-pinky-home
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mount-hole-pinky-bottom
-      operation: subtract
-    - what: circle
-      radius: 1
-      where: mirror_mount-hole-pinky-bottom
+      where: /.*mount-hole.*/
       operation: subtract
   preview:
     - name: board
@@ -336,7 +283,9 @@ pcbs:
     footprints:
       mx-switches:
         what: ceoloide/switch_mx
-        where: true
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
         params:
           solder: true
           hotswap: false
@@ -345,7 +294,9 @@ pcbs:
           to: "{{colrow}}"
       diodes:
         what: diode
-        where: true
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
