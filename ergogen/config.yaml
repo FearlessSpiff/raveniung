@@ -149,7 +149,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_pinky_bottom
-        shift: [-0.5U, -0.35U]
+        shift: [-0.5U, -0.2U]
       key:
         name: mount-hole-pinky-bottom
         width: 1
