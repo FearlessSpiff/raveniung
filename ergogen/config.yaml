@@ -113,7 +113,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_top
-        shift: [-0.5U, -0.35U]
+        shift: [-0.5U, 0.2U]
       key:
         name: mount-hole-inner-top
         width: 1
@@ -122,7 +122,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_bottom
-        shift: [-0.5U, -0.35U]
+        shift: [-0.5U, -0.2U]
       key:
         name: mount-hole-inner-bottom
         width: 1
@@ -140,7 +140,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_pinky_home
-        shift: [-0.5U, 0.35U]
+        shift: [-0.5U, 0.2U]
       key:
         name: mount-hole-pinky-home
         width: 1
