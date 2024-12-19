@@ -463,6 +463,9 @@ pcbs:
       mounting-holes:
         what: ceoloide/mounting_hole_npth
         where: /.*mount-hole.*/
+        params:
+          hole_size: 4.8
+          hole_drill: 4.3
       standoffs:
         what: ceoloide/mounting_hole_plated
         where: /.*standoff.*/
