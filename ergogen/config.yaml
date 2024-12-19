@@ -299,7 +299,7 @@ pcbs:
           from: "{{column_net}}"
           to: "{{colrow}}"
       diodes:
-        what: diode
+        what: ceoloide/diode_tht_sod123
         where:
           - /matrix_.*/
           - /thumb_.*/
