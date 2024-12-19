@@ -232,6 +232,8 @@ outlines:
           shift: [0.65P, -P]
         - ref: mirror_matrix_index_bottom
           shift: [-P, -P]
+        - ref: mirror_matrix_index_bottom
+          shift: [0.2P, -P]
         - ref: mirror_thumb_reachy
           shift: [-P, -P]
         - ref: mirror_thumb_reachy
@@ -248,6 +250,8 @@ outlines:
           shift: [0.65P, -P]
         - ref: thumb_reachy
           shift: [-P, -P]
+        - ref: matrix_index_bottom
+          shift: [0.2P, -P]
         - ref: matrix_index_bottom
           shift: [-P, -P]
         - ref: matrix_middle_bottom
@@ -391,7 +395,7 @@ pcbs:
           P16: ROW6
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [0, -5.15]
+          shift: [0, -7.6]
       ffc-12pin:
         what: ceoloide/backlog/tildewill/connector_ffc_12p
         params:
@@ -404,23 +408,23 @@ pcbs:
           P12: VCC
         where:
           ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-          shift: [0, -12]
+          shift: [0, -14.5]
       power-switch:
         what: ceoloide/power_switch_smd_side
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [14.9, 9.4]
+          shift: [14.9, 7.1]
           rotate: 90
       reset-switch:
         what: ceoloide/reset_switch_smd_side
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [-14, 9]
+          shift: [-14, 7.1]
       battery-connector:
         what: ceoloide/battery_connector_jst_ph_2
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [-14, 3]
+          shift: [-14, 1.5]
       mounting-holes:
         what: ceoloide/mounting_hole_npth
         where: /.*mount-hole.*/
@@ -432,9 +436,8 @@ pcbs:
         params:
           text: raveniung ver0.1
         where:
-          ref: mirror_thumb_reachy
-          shift: [-20, 1]
-          rotate: -40
+          ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+          shift: [0, -12]
   raveniung-top-plate:
     template: kicad8
     outlines:
@@ -449,6 +452,5 @@ pcbs:
         params:
           text: raveniung ver0.1
         where:
-          ref: mirror_thumb_reachy
-          shift: [-20, 1]
-          rotate: -40
+          ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+          shift: [0, -12]
