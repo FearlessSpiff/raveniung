@@ -293,9 +293,9 @@ outlines:
       fillet: 3
       points:
         - ref: matrix_inner_top
-          shift: [P, P]
+          shift: [P, 0.8P]
         - ref: mirror_matrix_inner_top
-          shift: [P, P]
+          shift: [P, 0.8P]
         - ref: mirror_matrix_inner_home
           shift: [P, 0]
         - ref: mirror_matrix_inner_bottom
@@ -306,6 +306,35 @@ outlines:
           shift: [P, -0.8P]
         - ref: thumb_middle
           shift: [P, -0.8P]
+        - ref: thumb_middle
+          shift: [1P, P]
+        - ref: matrix_inner_bottom
+          shift: [P, -P]
+        - ref: matrix_inner_bottom
+          shift: [P, 0]
+        - ref: matrix_inner_home
+          shift: [P, 0]
+    #- name: cirque-case
+    #  operation: stack
+    - what: circle
+      radius: 1
+      where: /.*standoff.*/
+      operation: subtract
+  cover-simple:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_inner_top
+          shift: [P, 0.8P]
+        - ref: mirror_matrix_inner_top
+          shift: [P, 0.8P]
+        - ref: mirror_matrix_inner_home
+          shift: [P, 0]
+        - ref: mirror_matrix_inner_bottom
+          shift: [P, -P]
+        - ref: mirror_thumb_middle
+          shift: [1P, P]
         - ref: thumb_middle
           shift: [1P, P]
         - ref: matrix_inner_bottom
@@ -341,6 +370,12 @@ outlines:
     - name: keycaps
       operation: subtract
     - name: cover
+      operation: stack
+  preview-simple:
+    - name: board
+    - name: keycaps
+      operation: subtract
+    - name: cover-simple
       operation: stack
 pcbs:
   raveniung-board:
