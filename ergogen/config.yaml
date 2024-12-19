@@ -232,8 +232,6 @@ outlines:
           shift: [0.65P, -P]
         - ref: mirror_matrix_index_bottom
           shift: [-P, -P]
-        - ref: mirror_matrix_index_bottom
-          shift: [0.2P, -P]
         - ref: mirror_thumb_reachy
           shift: [-P, -P]
         - ref: mirror_thumb_reachy
@@ -250,8 +248,6 @@ outlines:
           shift: [0.65P, -P]
         - ref: thumb_reachy
           shift: [-P, -P]
-        - ref: matrix_index_bottom
-          shift: [0.2P, -P]
         - ref: matrix_index_bottom
           shift: [-P, -P]
         - ref: matrix_middle_bottom
