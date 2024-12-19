@@ -410,11 +410,11 @@ pcbs:
         params:
           reverse_mount: true
           show_silk_labels_on_both_sides: true
-          P0: SCK
-          P1: DR
-          P2: MOSI
-          P3: MISO
-          P4: CS
+          P0: SCK # Black
+          P1: DR # Green
+          P2: MOSI # Red
+          P3: MISO # White
+          P4: CS # Blue
           P5: COL0
           P6: COL1
           P7: COL2
@@ -434,11 +434,11 @@ pcbs:
       ffc-12pin:
         what: ceoloide/backlog/tildewill/connector_ffc_12p
         params:
-          P1: SCK
-          P2: MISO
-          P3: CS
-          P4: DR
-          P5: MOSI
+          P1: SCK # Black
+          P2: MISO # White
+          P3: CS # Blue
+          P4: DR # Green
+          P5: MOSI # Red
           P11: GND
           P12: VCC
         where:
