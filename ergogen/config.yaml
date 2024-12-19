@@ -1,0 +1,396 @@
+units:
+  angle: -10
+  P: 0.6U
+points:
+  zones:
+    matrix:
+      # Fix placement on KiCAD sheet.
+      anchor:
+        shift: [100, -100]
+      rotate: angle
+      mirror: &mirror
+        ref: matrix_inner_home
+        shift: [0, -U]
+        distance: 74
+      columns:
+        outer:
+          key:
+            column_net: COL0
+            mirror.column_net: COL5
+          rows:
+            top:
+              skip: true
+        pinky:
+          key:
+            column_net: COL1
+            mirror.column_net: COL4
+          rows:
+            top:
+              skip: true
+        ring:
+          key:
+            stagger: 0.25U
+            column_net: COL2
+            mirror.column_net: COL3
+        middle:
+          key:
+            stagger: 0.25U
+            column_net: COL3
+            mirror.column_net: COL2
+        index:
+          key:
+            stagger: -0.25U
+            column_net: COL4
+            mirror.column_net: COL1
+        inner:
+          key:
+            stagger: -0.25U
+            column_net: COL5
+            mirror.column_net: COL0
+      rows:
+        bottom:
+          padding: U
+          row_net: ROW2
+          mirror.row_net: ROW5
+        home:
+          padding: U
+          row_net: ROW1
+          mirror.row_net: ROW4
+        top:
+          padding: U
+          row_net: ROW0
+          mirror.row_net: ROW3
+    thumb_middle:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [0.75U, -1.5U]
+        rotate: 0
+      key:
+        name: thumb_middle
+        row_net: ROW6
+        column_net: COL1
+        mirror.column_net: COL2
+        rotate: angle
+    thumb_reachy:
+      mirror: *mirror
+      anchor:
+        ref: thumb_middle
+        shift: [-1.1U, 0.1U]
+        rotate: 8
+      key:
+        name: thumb_reachy
+        row_net: ROW6
+        column_net: COL0
+        mirror.column_net: COL3
+    standoff-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_home
+        shift: [15, 9]
+      key:
+        name: standoff-top
+        width: 1
+        height: 1
+    standoff-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [15, -8]
+      key:
+        name: standoff-bottom
+        width: 1
+        height: 1
+    mount-hole-middle:
+      anchor:
+        ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+        shift: [0, 0]
+      key:
+        name: mount-hole-middle
+        width: 1
+        height: 1
+    mount-hole-inner-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_top
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-inner-top
+        width: 1
+        height: 1
+    mount-hole-inner-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-inner-bottom
+        width: 1
+        height: 1
+    mount-hole-middle-home:
+      mirror: *mirror
+      anchor:
+        ref: matrix_middle_home
+        shift: [-0.5U, -0.35U]
+      key:
+        name: mount-hole-middle-home
+        width: 1
+        height: 1
+    mount-hole-pinky-home:
+      mirror: *mirror
+      anchor:
+        ref: matrix_pinky_home
+        shift: [-0.5U, 0.35U]
+      key:
+        name: mount-hole-pinky-home
+        width: 1
+        height: 1
+    mount-hole-pinky-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_pinky_bottom
+        shift: [-0.5U, -0.2U]
+      key:
+        name: mount-hole-pinky-bottom
+        width: 1
+        height: 1
+outlines:
+  keycaps:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      size: [U-0.5, U-0.5]
+  keys:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      size: [14, 14]
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_outer_home
+          shift: [-P, P]
+        - ref: matrix_middle_top
+          shift: [-1.75P, P]
+        - ref: matrix_middle_top
+          shift: [1.75P, P]
+        - ref: matrix_inner_top
+          shift: [0, P]
+        - ref: mirror_matrix_inner_top
+          shift: [0, P]
+        - ref: mirror_matrix_middle_top
+          shift: [1.75P, P]
+        - ref: mirror_matrix_middle_top
+          shift: [-1.75P, P]
+        - ref: mirror_matrix_outer_home
+          shift: [-P, P]
+        - ref: mirror_matrix_outer_bottom
+          shift: [-P, -P]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0, -2P]
+        - ref: mirror_thumb_reachy
+          shift: [-0.75P, -P]
+        - ref: mirror_thumb_middle
+          shift: [0.5P, -1.2P]
+        - ref: thumb_middle
+          shift: [0.5P, -1.2P]
+        - ref: thumb_reachy
+          shift: [-0.75P, -P]
+        - ref: matrix_middle_bottom
+          shift: [0, -2P]
+        - ref: matrix_outer_bottom
+          shift: [-P, -P]
+  mcu-top-cutout:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_inner_top
+          shift: [P, U]
+        - ref: mirror_matrix_inner_top
+          shift: [P, U]
+        - ref: mirror_matrix_inner_bottom
+          shift: [P, -1.1P]
+        - ref: matrix_inner_bottom
+          shift: [P, -1.1P]
+        - ref: matrix_inner_top
+          shift: [P, U]
+  cirque-case:
+    - what: circle
+      radius: 24
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -15]
+  cover:
+    - what: polygon
+      operation: stack
+      fillet: 3
+      points:
+        - ref: matrix_inner_top
+          shift: [P, P]
+        - ref: mirror_matrix_inner_top
+          shift: [P, P]
+        - ref: mirror_matrix_inner_home
+          shift: [P, 0]
+        - ref: mirror_matrix_inner_bottom
+          shift: [P, -P]
+        - ref: mirror_thumb_middle
+          shift: [1P, P]
+        - ref: mirror_thumb_middle
+          shift: [P, -0.8P]
+        - ref: thumb_middle
+          shift: [P, -0.8P]
+        - ref: thumb_middle
+          shift: [1P, P]
+        - ref: matrix_inner_bottom
+          shift: [P, -P]
+        - ref: matrix_inner_bottom
+          shift: [P, 0]
+        - ref: matrix_inner_home
+          shift: [P, 0]
+    #- name: cirque-case
+    #  operation: stack
+    - what: circle
+      radius: 1
+      where: /.*standoff.*/
+      operation: subtract
+  top-plate:
+    - name: board
+    - name: keys
+      operation: subtract
+    - name: mcu-top-cutout
+      operation: subtract
+    - what: circle
+      radius: 1
+      where: /.*mount-hole.*/
+      operation: subtract
+  bottom-plate:
+    - name: board
+    - what: circle
+      radius: 1.1
+      where: /.*mount-hole.*/
+      operation: subtract
+  preview:
+    - name: board
+    - name: keycaps
+      operation: subtract
+    - name: cover
+      operation: stack
+pcbs:
+  raveniung-board:
+    template: kicad8
+    outlines:
+      main:
+        outline: board
+    footprints:
+      mx-switches:
+        what: ceoloide/switch_mx
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          solder: true
+          hotswap: false
+          include_keycap: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diodes:
+        what: ceoloide/diode_tht_sod123
+        where:
+          - /matrix_.*/
+          - /thumb_.*/
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]
+      mcu:
+        what: ceoloide/mcu_nice_nano
+        params:
+          reverse_mount: true
+          show_silk_labels_on_both_sides: true
+          P0: SCK
+          P1: DR
+          P2: MOSI
+          P3: MISO
+          P4: CS
+          P5: COL0
+          P6: COL1
+          P7: COL2
+          P8: COL3
+          P9: COL4
+          P10: COL5
+          P21: ROW0
+          P20: ROW1
+          P19: ROW2
+          P18: ROW3
+          P15: ROW4
+          P14: ROW5
+          P16: ROW6
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [0, -5.15]
+      ffc-12pin:
+        what: ceoloide/backlog/tildewill/connector_ffc_12p
+        params:
+          P1: SCK
+          P2: MISO
+          P3: CS
+          P4: DR
+          P5: MOSI
+          P11: GND
+          P12: VCC
+        where:
+          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+          shift: [0, -12]
+      power-switch:
+        what: ceoloide/power_switch_smd_side
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [14.9, 9.4]
+          rotate: 90
+      reset-switch:
+        what: ceoloide/reset_switch_smd_side
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [-14, 9]
+      battery-connector:
+        what: ceoloide/battery_connector_jst_ph_2
+        where:
+          ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+          shift: [-14, 3]
+      mounting-holes:
+        what: ceoloide/mounting_hole_npth
+        where: /.*mount-hole.*/
+      standoffs:
+        what: ceoloide/mounting_hole_plated
+        where: /.*standoff.*/
+      label:
+        what: ceoloide/utility_text
+        params:
+          text: raveniung ver0.1
+        where:
+          ref: mirror_thumb_reachy
+          shift: [-20, 1]
+          rotate: -40
+  raveniung-top-plate:
+    template: kicad8
+    outlines:
+      main:
+        outline: top-plate
+    footprints:
+      mounting-holes:
+        what: ceoloide/mounting_hole_npth
+        where: /.*mount-hole.*/
+      label:
+        what: ceoloide/utility_text
+        params:
+          text: raveniung ver0.1
+        where:
+          ref: mirror_thumb_reachy
+          shift: [-20, 1]
+          rotate: -40
