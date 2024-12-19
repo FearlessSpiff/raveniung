@@ -170,38 +170,100 @@ outlines:
   board:
     - what: polygon
       operation: stack
-      fillet: 3
+      fillet: 2
       points:
         - ref: matrix_outer_home
           shift: [-P, P]
+        - ref: matrix_pinky_home
+          shift: [-P, P]
+        - ref: matrix_pinky_home
+          shift: [0.65P, P]
+        - ref: matrix_ring_top
+          shift: [-P, P]
+        - ref: matrix_ring_top
+          shift: [0.65P, P]
         - ref: matrix_middle_top
-          shift: [-1.75P, P]
+          shift: [-P, P]
         - ref: matrix_middle_top
-          shift: [1.75P, P]
+          shift: [P, P]
+        - ref: matrix_index_top
+          shift: [-0.65P, P]
+        - ref: matrix_index_top
+          shift: [P, P]
         - ref: matrix_inner_top
-          shift: [0, P]
+          shift: [-0.65P, P]
+        - ref: matrix_inner_top
+          shift: [P, P]
         - ref: mirror_matrix_inner_top
-          shift: [0, P]
+          shift: [P, P]
+        - ref: mirror_matrix_inner_top
+          shift: [P, P]
+        - ref: mirror_matrix_inner_top
+          shift: [-0.65P, P]
+        - ref: mirror_matrix_index_top
+          shift: [P, P]
+        - ref: mirror_matrix_index_top
+          shift: [-0.65P, P]
         - ref: mirror_matrix_middle_top
-          shift: [1.75P, P]
+          shift: [P, P]
         - ref: mirror_matrix_middle_top
-          shift: [-1.75P, P]
+          shift: [-P, P]
+        - ref: mirror_matrix_ring_top
+          shift: [0.65P, P]
+        - ref: mirror_matrix_ring_top
+          shift: [-P, P]
+        - ref: mirror_matrix_pinky_home
+          shift: [0.65P, P]
+        - ref: mirror_matrix_pinky_home
+          shift: [-P, P]
         - ref: mirror_matrix_outer_home
           shift: [-P, P]
         - ref: mirror_matrix_outer_bottom
           shift: [-P, -P]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [P, -P]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.65P, -P]
+        - ref: mirror_matrix_ring_bottom
+          shift: [P, -P]
         - ref: mirror_matrix_middle_bottom
-          shift: [0, -2P]
+          shift: [-0.65P, -P]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0.65P, -P]
+        - ref: mirror_matrix_index_bottom
+          shift: [-P, -P]
+        - ref: mirror_matrix_index_bottom
+          shift: [0.2P, -P]
         - ref: mirror_thumb_reachy
-          shift: [-0.75P, -P]
+          shift: [-P, -P]
+        - ref: mirror_thumb_reachy
+          shift: [0.65P, -P]
         - ref: mirror_thumb_middle
-          shift: [0.5P, -1.2P]
+          shift: [-.9P, -P]
+        - ref: mirror_thumb_middle
+          shift: [P, -P]
         - ref: thumb_middle
-          shift: [0.5P, -1.2P]
+          shift: [P, -P]
+        - ref: thumb_middle
+          shift: [-.9P, -P]
         - ref: thumb_reachy
-          shift: [-0.75P, -P]
+          shift: [0.65P, -P]
+        - ref: thumb_reachy
+          shift: [-P, -P]
+        - ref: matrix_index_bottom
+          shift: [0.2P, -P]
+        - ref: matrix_index_bottom
+          shift: [-P, -P]
         - ref: matrix_middle_bottom
-          shift: [0, -2P]
+          shift: [0.65P, -P]
+        - ref: matrix_middle_bottom
+          shift: [-0.65P, -P]
+        - ref: matrix_ring_bottom
+          shift: [P, -P]
+        - ref: matrix_ring_bottom
+          shift: [-0.65P, -P]
+        - ref: matrix_pinky_bottom
+          shift: [P, -P]
         - ref: matrix_outer_bottom
           shift: [-P, -P]
   mcu-top-cutout:
