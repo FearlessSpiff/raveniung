@@ -16,6 +16,13 @@ ergogen .
 
 ## Notes
 
+### Laser cutting (CR-Falcon Laser 10W)
+
+#### Flux Oak Wood 3mm
+
+* Outline and switch holes: Cut 2 times with 5mm/s 90% power
+* M2 holes: Cut 2 times with 5mm/s 100% power
+
 ### Measurements
 
 #### With PCB as top-plate and 3mm acryl top middle plate
