@@ -393,6 +393,8 @@ pcbs:
           solder: true
           hotswap: false
           include_keycap: true
+          keycap_height: 14
+          keycap_width: 14
           from: "{{column_net}}"
           to: "{{colrow}}"
       diodes:
