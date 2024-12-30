@@ -412,11 +412,11 @@ pcbs:
         params:
           reverse_mount: true
           show_silk_labels_on_both_sides: true
-          P0: SCK # Black
-          P1: DR # Green
-          P2: MOSI # Red
-          P3: MISO # White
-          P4: CS # Blue
+          P0: SCK # Black (008)
+          P1: DR # Green (006)
+          P2: MOSI # Red (017)
+          P3: MISO # White (020)
+          P4: CS # Blue (022)
           P5: COL0
           P6: COL1
           P7: COL2
