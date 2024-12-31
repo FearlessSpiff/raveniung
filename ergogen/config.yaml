@@ -395,8 +395,8 @@ pcbs:
           include_keycap: true
           keycap_height: 14
           keycap_width: 14
-          from: "{{column_net}}"
-          to: "{{colrow}}"
+          from: "{{colrow}}"
+          to: "{{column_net}}"
       diodes:
         what: ceoloide/diode_tht_sod123
         where:
