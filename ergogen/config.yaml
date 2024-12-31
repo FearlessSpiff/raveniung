@@ -434,7 +434,7 @@ pcbs:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -7.6]
       ffc-12pin:
-        what: ceoloide/backlog/tildewill/connector_ffc_12p
+        what: FearlessSpiff/connector_ffc_12p_0_5mm
         params:
           P1: SCK # Black
           P2: MISO # White
