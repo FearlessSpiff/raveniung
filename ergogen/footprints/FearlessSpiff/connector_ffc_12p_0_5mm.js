@@ -1,11 +1,8 @@
 /*
-Copyright (c) 2023 Marco Massarelli
-
 SPDX-License-Identifier: MIT
 
 To view a copy of this license, visit https://opensource.org/license/mit/
 
-Author: @TildeWill
 */
 module.exports = {
   params: {
