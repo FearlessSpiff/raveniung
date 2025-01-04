@@ -167,6 +167,12 @@ outlines:
         - /matrix_.*/
         - /thumb_.*/
       size: [14, 14]
+  keys-diodes-solder:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      size: [12, 12]
   board:
     - what: polygon
       operation: stack
@@ -375,6 +381,20 @@ outlines:
       radius: 1.1
       where: /.*mount-hole.*/
       operation: subtract
+  bottom-foam-plate:
+    - name: board
+    - name: keys-diodes-solder
+      operation: subtract
+    - what: circle
+      radius: 2.15
+      where: /.*mount-hole.*/
+      operation: subtract
+    - what: circle
+      radius: 2
+      where: /.*standoff.*/
+      operation: subtract
+    # add mcu solder
+    # add other stuff?!?
   preview:
     - name: board
     - name: keycaps
