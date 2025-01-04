@@ -356,7 +356,17 @@ outlines:
     - name: mcu-top-cutout
       operation: subtract
     - what: circle
-      radius: 1
+      radius: 1.1
+      where: /.*mount-hole.*/
+      operation: subtract
+  top-foam-plate:
+    - name: board
+    - name: keys
+      operation: subtract
+    - name: mcu-top-cutout
+      operation: subtract
+    - what: circle
+      radius: 1.1
       where: /.*mount-hole.*/
       operation: subtract
   bottom-plate:
