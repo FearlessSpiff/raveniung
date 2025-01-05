@@ -407,16 +407,6 @@ outlines:
       operation: subtract
     - name: cover-simple
       operation: stack
-  preview-pcb-mechanical:
-    - name: board
-    - what: circle
-      radius: 2.15
-      where: /.*mount-hole.*/
-      operation: subtract
-    - what: circle
-      radius: 1.1
-      where: /.*standoff.*/
-      operation: subtract
 pcbs:
   raveniung-board:
     template: kicad8
