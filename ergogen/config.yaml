@@ -491,7 +491,7 @@ pcbs:
         what: ceoloide/battery_connector_jst_ph_2
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [-14, -18]
+          shift: [14, -18]
       mounting-holes:
         what: ceoloide/mounting_hole_npth
         where: /.*mount-hole.*/
