@@ -379,13 +379,13 @@ outlines:
     - name: mcu-top-cutout
       operation: subtract
     - what: circle
-      radius: 1.1
+      radius: 2.15
       where: /.*mount-hole.*/
       operation: subtract
   bottom-plate:
     - name: board
     - what: circle
-      radius: 1.1
+      radius: 2.15
       where: /.*mount-hole.*/
       operation: subtract
   bottom-foam-plate:
@@ -397,16 +397,16 @@ outlines:
       where: /.*mount-hole.*/
       operation: subtract
     - what: circle
-      radius: 2
+      radius: 2.15
       where: /.*standoff.*/
       operation: subtract
     - what: rectangle
       where: mcu-solder-points
-      size: [4,33]
+      size: [4, 33]
       operation: subtract
     - what: rectangle
       where: mirror_mcu-solder-points
-      size: [4,33]
+      size: [4, 33]
       operation: subtract
   preview:
     - name: board

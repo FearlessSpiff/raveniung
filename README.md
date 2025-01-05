@@ -27,7 +27,7 @@ ergogen .
 
 #### With PCB as top-plate and 3mm acryl top middle plate
 
-* Standoffs must be 6mm
+* Standoffs must be 6mm high, 3mm diameter
 * Screw from bottom M2x6mm (6.8mm total)
 * Screw from top M2x4mm (4.8mm total)
 
