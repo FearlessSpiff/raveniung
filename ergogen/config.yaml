@@ -154,6 +154,15 @@ points:
         name: mount-hole-pinky-bottom
         width: 1
         height: 1
+    mcu-solder-points:
+      mirror: *mirror
+      anchor:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [-7.6, 9.8]
+      key:
+        name: mcu-solder-points
+        width: 1
+        height: 1
 outlines:
   keycaps:
     - what: rectangle
@@ -172,7 +181,7 @@ outlines:
       where:
         - /matrix_.*/
         - /thumb_.*/
-      size: [12, 12]
+      size: [13, 13]
   board:
     - what: polygon
       operation: stack
@@ -320,8 +329,6 @@ outlines:
           shift: [P, 0]
         - ref: matrix_inner_home
           shift: [P, 0]
-    #- name: cirque-case
-    #  operation: stack
     - what: circle
       radius: 1
       where: /.*standoff.*/
@@ -393,8 +400,14 @@ outlines:
       radius: 2
       where: /.*standoff.*/
       operation: subtract
-    # add mcu solder
-    # add other stuff?!?
+    - what: rectangle
+      where: mcu-solder-points
+      size: [4,33]
+      operation: subtract
+    - what: rectangle
+      where: mirror_mcu-solder-points
+      size: [4,33]
+      operation: subtract
   preview:
     - name: board
     - name: keycaps
