@@ -308,13 +308,13 @@ outlines:
       fillet: 3
       points:
         - ref: matrix_inner_top
-          shift: [P, 0.8P]
+          shift: [P, P]
         - ref: mirror_matrix_inner_top
-          shift: [P, 0.8P]
+          shift: [P, P]
         - ref: mirror_matrix_inner_home
           shift: [P, 0]
         - ref: mirror_matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.2P]
         - ref: mirror_thumb_middle
           shift: [1P, P]
         - ref: mirror_thumb_middle
@@ -324,7 +324,7 @@ outlines:
         - ref: thumb_middle
           shift: [1P, P]
         - ref: matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.2P]
         - ref: matrix_inner_bottom
           shift: [P, 0]
         - ref: matrix_inner_home
@@ -339,19 +339,19 @@ outlines:
       fillet: 3
       points:
         - ref: matrix_inner_top
-          shift: [P, 0.8P]
+          shift: [P, P]
         - ref: mirror_matrix_inner_top
-          shift: [P, 0.8P]
+          shift: [P, P]
         - ref: mirror_matrix_inner_home
           shift: [P, 0]
         - ref: mirror_matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.2P]
         - ref: mirror_thumb_middle
           shift: [1P, P]
         - ref: thumb_middle
           shift: [1P, P]
         - ref: matrix_inner_bottom
-          shift: [P, -P]
+          shift: [P, -1.2P]
         - ref: matrix_inner_bottom
           shift: [P, 0]
         - ref: matrix_inner_home
