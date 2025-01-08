@@ -491,12 +491,16 @@ pcbs:
           shift: [0, -14.5]
       power-switch:
         what: ceoloide/power_switch_smd_side
+        params:
+          side: B
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [0, 7.1]
+          shift: [14.9, 7.1]
           rotate: 90
       reset-switch:
         what: ceoloide/reset_switch_smd_side
+        params:
+          side: B
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [-13.5, 7.1]
@@ -504,7 +508,7 @@ pcbs:
         what: ceoloide/battery_connector_jst_ph_2
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
-          shift: [13.5, -7]
+          shift: [13.5, -8]
           rotate: 180
       mounting-holes:
         what: ceoloide/mounting_hole_npth
