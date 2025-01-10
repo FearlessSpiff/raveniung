@@ -476,19 +476,6 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -7.6]
-      ffc-12pin:
-        what: FearlessSpiff/connector_ffc_12p_0_5mm
-        params:
-          P1: SCK # Black
-          P2: MISO # White
-          P3: CS # Blue
-          P4: DR # Green
-          P5: MOSI # Red
-          P11: GND
-          P12: VCC
-        where:
-          ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-          shift: [0, -14.5]
       power-switch:
         what: ceoloide/power_switch_smd_side
         params:
