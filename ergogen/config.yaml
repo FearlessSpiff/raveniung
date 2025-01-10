@@ -60,29 +60,32 @@ points:
           padding: U
           row_net: ROW0
           mirror.row_net: ROW3
-    thumb_middle:
-      mirror: *mirror
+    thumbs:    
       anchor:
         ref: matrix_inner_bottom
         shift: [0.75U, -1.5U]
-        rotate: 0
-      key:
-        name: thumb_middle
-        row_net: ROW6
-        column_net: COL1
-        mirror.column_net: COL2
-        rotate: angle
-    thumb_reachy:
-      mirror: *mirror
-      anchor:
-        ref: thumb_middle
-        shift: [-1.1U, 0.1U]
-        rotate: 8
-      key:
-        name: thumb_reachy
-        row_net: ROW6
-        column_net: COL0
-        mirror.column_net: COL3
+        rotate: -8
+      mirror: &mirror
+        ref: matrix_inner_home
+        shift: [0, -U]
+        distance: 74
+      columns:
+        inner:
+          key:
+            rotate: -8
+            shift: [0, -2]
+            column_net: COL1
+            mirror:column_net: COL2
+        reachy:
+          key:
+            rotate: 3
+            shift: [-40, 3]
+            column_net: COL0
+            mirror.column_net: COL3
+      rows:
+        thumb:
+          row_net: ROW6
+          mirror.row_net: ROW6
     standoff-top:
       mirror: *mirror
       anchor:
@@ -103,7 +106,7 @@ points:
         height: 1
     mount-hole-middle:
       anchor:
-        ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+        ref.aggregate.parts: [thumbs_inner_thumb, mirror_thumbs_inner_thumb]
         shift: [0, 0]
       key:
         name: mount-hole-middle
@@ -168,19 +171,19 @@ outlines:
     - what: rectangle
       where:
         - /matrix_.*/
-        - /thumb_.*/
+        - /thumbs_.*/
       size: [U-0.5, U-0.5]
   keys:
     - what: rectangle
       where:
         - /matrix_.*/
-        - /thumb_.*/
+        - /thumbs_.*/
       size: [14, 14]
   keys-diodes-solder:
     - what: rectangle
       where:
         - /matrix_.*/
-        - /thumb_.*/
+        - /thumbs_.*/
       size: [13, 13]
   board:
     - what: polygon
@@ -249,21 +252,21 @@ outlines:
           shift: [-P, -P]
         - ref: mirror_matrix_index_bottom
           shift: [0.2P, -P]
-        - ref: mirror_thumb_reachy
+        - ref: mirror_thumbs_reachy_thumb
           shift: [-P, -P]
-        - ref: mirror_thumb_reachy
+        - ref: mirror_thumbs_reachy_thumb
           shift: [0.65P, -P]
-        - ref: mirror_thumb_middle
+        - ref: mirror_thumbs_inner_thumb
           shift: [-.9P, -P]
-        - ref: mirror_thumb_middle
+        - ref: mirror_thumbs_inner_thumb
           shift: [P, -P]
-        - ref: thumb_middle
+        - ref: thumbs_inner_thumb
           shift: [P, -P]
-        - ref: thumb_middle
+        - ref: thumbs_inner_thumb
           shift: [-.9P, -P]
-        - ref: thumb_reachy
+        - ref: thumbs_reachy_thumb
           shift: [0.65P, -P]
-        - ref: thumb_reachy
+        - ref: thumbs_reachy_thumb
           shift: [-P, -P]
         - ref: matrix_index_bottom
           shift: [0.2P, -P]
@@ -315,13 +318,13 @@ outlines:
           shift: [P, 0]
         - ref: mirror_matrix_inner_bottom
           shift: [P, -1.2P]
-        - ref: mirror_thumb_middle
+        - ref: mirror_thumbs_inner_thumb
           shift: [1P, P]
-        - ref: mirror_thumb_middle
+        - ref: mirror_thumbs_inner_thumb
           shift: [P, -0.8P]
-        - ref: thumb_middle
+        - ref: thumbs_inner_thumb
           shift: [P, -0.8P]
-        - ref: thumb_middle
+        - ref: thumbs_inner_thumb
           shift: [1P, P]
         - ref: matrix_inner_bottom
           shift: [P, -1.2P]
@@ -346,9 +349,9 @@ outlines:
           shift: [P, 0]
         - ref: mirror_matrix_inner_bottom
           shift: [P, -1.2P]
-        - ref: mirror_thumb_middle
+        - ref: mirror_thumbs_inner_thumb
           shift: [1P, P]
-        - ref: thumb_middle
+        - ref: thumbs_inner_thumb
           shift: [1P, P]
         - ref: matrix_inner_bottom
           shift: [P, -1.2P]
@@ -431,7 +434,7 @@ pcbs:
         what: ceoloide/switch_mx
         where:
           - /matrix_.*/
-          - /thumb_.*/
+          - /thumbs_.*/
         params:
           solder: true
           hotswap: false
@@ -444,7 +447,7 @@ pcbs:
         what: ceoloide/diode_tht_sod123
         where:
           - /matrix_.*/
-          - /thumb_.*/
+          - /thumbs_.*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
@@ -524,7 +527,7 @@ pcbs:
         params:
           text: raveniung ver0.1
         where:
-          ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+          ref.aggregate.parts: [thumbs_inner_thumb, mirror_thumbs_inner_thumb]
           shift: [0, -12]
   raveniung-top-plate:
     template: kicad8
@@ -540,5 +543,5 @@ pcbs:
         params:
           text: raveniung ver0.1
         where:
-          ref.aggregate.parts: [thumb_middle, mirror_thumb_middle]
+          ref.aggregate.parts: [thumbs_inner_thumb, mirror_thumbs_inner_thumb]
           shift: [0, -12]
