@@ -75,7 +75,7 @@ points:
             rotate: -8
             shift: [0, -2]
             column_net: COL1
-            mirror:column_net: COL2
+            mirror.column_net: COL2
         reachy:
           key:
             rotate: 3
