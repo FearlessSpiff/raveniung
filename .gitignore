@@ -1,3 +1,5 @@
 ergogen/output
 ergogen/footprints/ceoloide
+*.kicad_prl
+*.kicad_pro
 *.DS_Store
