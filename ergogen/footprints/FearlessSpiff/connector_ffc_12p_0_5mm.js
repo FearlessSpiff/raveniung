@@ -37,7 +37,7 @@ module.exports = {
   (fp_line (start 5.5 4.9705) (end -5.5 4.9705)(stroke (width 0.254) (type default)) (layer "F.SilkS"))
   (fp_line (start 5.5 4.9705) (end 5.5 2.588)(stroke (width 0.254) (type default)) (layer "F.SilkS"))
   (fp_circle (center -3.429 -2.032) (end -3.302 -2.032)(stroke (width 0.254) (type default)) (fill none) (layer "F.SilkS"))
-  (pad "S1" smd rect (at 4.55 1.3625 ${p.rot}) (size 1.8 2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  (pad "S1" smd rect (at 4.95 1.3625 ${p.rot}) (size 2.2 2) (layers "F.Cu" "F.Paste" "F.Mask"))
   (pad "1" smd rect (at -2.75 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P1.str})
   (pad "2" smd rect (at -2.25 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P2.str})
   (pad "3" smd rect (at -1.75 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P3.str})
@@ -50,7 +50,7 @@ module.exports = {
   (pad "10" smd rect (at 1.75 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P10.str})
   (pad "11" smd rect (at 2.25 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P11.str})
   (pad "12" smd rect (at 2.75 -1.3625 ${p.rot}) (size 0.28 1.25) (layers "F.Cu" "F.Paste" "F.Mask") ${p.P12.str})
-  (pad "S2" smd rect (at -4.55 1.3625 ${p.rot}) (size 1.8 2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  (pad "S2" smd rect (at -4.95 1.3625 ${p.rot}) (size 2.2 2) (layers "F.Cu" "F.Paste" "F.Mask"))
   )
     `
     return footprint;
