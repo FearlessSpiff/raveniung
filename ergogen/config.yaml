@@ -161,9 +161,25 @@ points:
       mirror: *mirror
       anchor:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [-7.6, 9.8]
+        shift: [-7.6, 12]
       key:
         name: mcu-solder-points
+        width: 1
+        height: 1
+    power-switch-footprint:
+      anchor:
+        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+        shift: [14, 8]
+      key:
+        name: power-switch-footprint
+        width: 1
+        height: 1
+    reset-switch-footprint:
+      anchor:
+        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+        shift: [-14, 8]
+      key:
+        name: reset-switch-footprint
         width: 1
         height: 1
 outlines:
@@ -409,7 +425,15 @@ outlines:
       operation: subtract
     - what: rectangle
       where: mirror_mcu-solder-points
-      size: [4, 33]
+      size: [4, 36]
+      operation: subtract
+    - what: rectangle
+      where: power-switch-footprint
+      size: [14, 8]
+      operation: subtract
+    - what: rectangle
+      where: reset-switch-footprint
+      size: [14, 8]
       operation: subtract
   preview:
     - name: board
