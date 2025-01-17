@@ -4,3 +4,4 @@ ergogen/footprints/ceoloide
 *.kicad_pro
 *.kicad_pcb.lck
 *.DS_Store
+**/fp-info-cache
