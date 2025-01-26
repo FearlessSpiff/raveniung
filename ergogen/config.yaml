@@ -421,7 +421,7 @@ outlines:
       operation: subtract
     - what: rectangle
       where: mcu-solder-points
-      size: [4, 33]
+      size: [4, 36]
       operation: subtract
     - what: rectangle
       where: mirror_mcu-solder-points
