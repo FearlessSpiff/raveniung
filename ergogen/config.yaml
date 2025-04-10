@@ -1,6 +1,9 @@
 units:
   angle: -10
   P: 0.6U
+  caseOuter: 1.9
+  caseInner: 0.3
+  caseHoleRadius: 1.2
 points:
   zones:
     matrix:
@@ -60,7 +63,7 @@ points:
           padding: U
           row_net: ROW0
           mirror.row_net: ROW3
-    thumbs:    
+    thumbs:
       anchor:
         ref: matrix_inner_bottom
         shift: [0.75U, -1.5U]
@@ -300,6 +303,205 @@ outlines:
           shift: [P, -P]
         - ref: matrix_outer_bottom
           shift: [-P, -P]
+  caseOuter:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_outer_home
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: matrix_pinky_home
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: matrix_pinky_home
+          shift: [0.65P-caseOuter, P+caseOuter]
+        - ref: matrix_ring_top
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: matrix_ring_top
+          shift: [0.65P-caseOuter, P+caseOuter]
+        - ref: matrix_middle_top
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: matrix_middle_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: matrix_index_top
+          shift: [-0.65P+caseOuter, P+caseOuter]
+        - ref: matrix_index_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: matrix_inner_top
+          shift: [-0.65P+caseOuter, P+caseOuter]
+        - ref: matrix_inner_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_inner_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_inner_top
+          shift: [P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_inner_top
+          shift: [-0.65P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_index_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_index_top
+          shift: [-0.65P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_middle_top
+          shift: [P+caseOuter, P+caseOuter]
+        - ref: mirror_matrix_middle_top
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_ring_top
+          shift: [0.65P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_ring_top
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_pinky_home
+          shift: [0.65P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_pinky_home
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_outer_home
+          shift: [-P-caseOuter, P+caseOuter]
+        - ref: mirror_matrix_outer_bottom
+          shift: [-P-caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.65P+caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_ring_bottom
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_middle_bottom
+          shift: [-0.65P+caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0.65P-caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_index_bottom
+          shift: [-P-caseOuter, -P-caseOuter]
+        - ref: mirror_matrix_index_bottom
+          shift: [0.2P-caseOuter, -P-caseOuter]
+        - ref: mirror_thumbs_reachy_thumb
+          shift: [-P-caseOuter, -P-caseOuter]
+        - ref: mirror_thumbs_reachy_thumb
+          shift: [0.65P-caseOuter, -P-caseOuter]
+        - ref: mirror_thumbs_inner_thumb
+          shift: [-.9P-caseOuter, -1.01P-caseOuter]
+        - ref: mirror_thumbs_inner_thumb
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: thumbs_inner_thumb
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: thumbs_inner_thumb
+          shift: [-.9P-caseOuter, -P-caseOuter]
+        - ref: thumbs_reachy_thumb
+          shift: [0.65P-caseOuter, -P-caseOuter]
+        - ref: thumbs_reachy_thumb
+          shift: [-P-caseOuter, -P-caseOuter]
+        - ref: matrix_index_bottom
+          shift: [0.2P-caseOuter, -P-caseOuter]
+        - ref: matrix_index_bottom
+          shift: [-P-caseOuter, -P-caseOuter]
+        - ref: matrix_middle_bottom
+          shift: [0.65P-caseOuter, -P-caseOuter]
+        - ref: matrix_middle_bottom
+          shift: [-0.65P+caseOuter, -P-caseOuter]
+        - ref: matrix_ring_bottom
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: matrix_ring_bottom
+          shift: [-0.65P+caseOuter, -P-caseOuter]
+        - ref: matrix_pinky_bottom
+          shift: [P+caseOuter, -P-caseOuter]
+        - ref: matrix_outer_bottom
+          shift: [-P-caseOuter, -P-caseOuter]
+  caseInner:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: matrix_outer_home
+          shift: [-P-caseInner, P+caseInner]
+        - ref: matrix_pinky_home
+          shift: [-P-caseInner, P+caseInner]
+        - ref: matrix_pinky_home
+          shift: [0.65P-caseInner, P+caseInner]
+        - ref: matrix_ring_top
+          shift: [-P-caseInner, P+caseInner]
+        - ref: matrix_ring_top
+          shift: [0.65P-caseInner, P+caseInner]
+        - ref: matrix_middle_top
+          shift: [-P-caseInner, P+caseInner]
+        - ref: matrix_middle_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: matrix_index_top
+          shift: [-0.65P+caseInner, P+caseInner]
+        - ref: matrix_index_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: matrix_inner_top
+          shift: [-0.65P+caseInner, P+caseInner]
+        - ref: matrix_inner_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: mirror_matrix_inner_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: mirror_matrix_inner_top
+          shift: [P-caseInner, P+caseInner]
+        - ref: mirror_matrix_inner_top
+          shift: [-0.65P+caseInner, P+caseInner]
+        - ref: mirror_matrix_index_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: mirror_matrix_index_top
+          shift: [-0.65P+caseInner, P+caseInner]
+        - ref: mirror_matrix_middle_top
+          shift: [P+caseInner, P+caseInner]
+        - ref: mirror_matrix_middle_top
+          shift: [-P-caseInner, P+caseInner]
+        - ref: mirror_matrix_ring_top
+          shift: [0.65P-caseInner, P+caseInner]
+        - ref: mirror_matrix_ring_top
+          shift: [-P-caseInner, P+caseInner]
+        - ref: mirror_matrix_pinky_home
+          shift: [0.65P-caseInner, P+caseInner]
+        - ref: mirror_matrix_pinky_home
+          shift: [-P-caseInner, P+caseInner]
+        - ref: mirror_matrix_outer_home
+          shift: [-P-caseInner, P+caseInner]
+        - ref: mirror_matrix_outer_bottom
+          shift: [-P-caseInner, -P-caseInner]
+        - ref: mirror_matrix_pinky_bottom
+          shift: [P+caseInner, -P-caseInner]
+        - ref: mirror_matrix_ring_bottom
+          shift: [-0.65P+caseInner, -P-caseInner]
+        - ref: mirror_matrix_ring_bottom
+          shift: [P+caseInner, -P-caseInner]
+        - ref: mirror_matrix_middle_bottom
+          shift: [-0.65P+caseInner, -P-caseInner]
+        - ref: mirror_matrix_middle_bottom
+          shift: [0.65P-caseInner, -P-caseInner]
+        - ref: mirror_matrix_index_bottom
+          shift: [-P-caseInner, -P-caseInner]
+        - ref: mirror_matrix_index_bottom
+          shift: [0.2P-caseInner, -P-caseInner]
+        - ref: mirror_thumbs_reachy_thumb
+          shift: [-P-caseInner, -P-caseInner]
+        - ref: mirror_thumbs_reachy_thumb
+          shift: [0.65P-caseInner, -P-caseInner]
+        - ref: mirror_thumbs_inner_thumb
+          shift: [-.9P-caseInner, -P-caseInner]
+        - ref: mirror_thumbs_inner_thumb
+          shift: [P+caseInner, -P-caseInner]
+        - ref: thumbs_inner_thumb
+          shift: [P+caseInner, -P-caseInner]
+        - ref: thumbs_inner_thumb
+          shift: [-.9P-caseInner, -P-caseInner]
+        - ref: thumbs_reachy_thumb
+          shift: [0.65P-caseInner, -P-caseInner]
+        - ref: thumbs_reachy_thumb
+          shift: [-P-caseInner, -P-caseInner]
+        - ref: matrix_index_bottom
+          shift: [0.2P-caseInner, -P-caseInner]
+        - ref: matrix_index_bottom
+          shift: [-P-caseInner, -P-caseInner]
+        - ref: matrix_middle_bottom
+          shift: [0.65P-caseInner, -P-caseInner]
+        - ref: matrix_middle_bottom
+          shift: [-0.65P+caseInner, -P-caseInner]
+        - ref: matrix_ring_bottom
+          shift: [P+caseInner, -P-caseInner]
+        - ref: matrix_ring_bottom
+          shift: [-0.65P+caseInner, -P-caseInner]
+        - ref: matrix_pinky_bottom
+          shift: [P+caseInner, -P-caseInner]
+        - ref: matrix_outer_bottom
+          shift: [-P-caseInner, -P-caseInner]
+
   mcu-top-cutout:
     - what: polygon
       operation: stack
@@ -435,6 +637,28 @@ outlines:
       where: reset-switch-footprint
       size: [14, 8]
       operation: subtract
+  caseHoles:
+    - what: circle
+      radius: caseHoleRadius
+      where: /.*mount-hole.*/
+  caseCutoutPower:
+    - what: rectangle
+      size: [10, 4]
+      where:
+        - ref: power-switch-footprint
+          shift: [0, 2.8]
+  caseCutoutReset:
+    - what: rectangle
+      size: [6, 4]
+      where:
+        - ref: reset-switch-footprint
+          shift: [0, 2.8]
+  caseCutoutUsbC:
+    - what: rectangle
+      size: [10, 4]
+      where:
+        ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
+        shift: [0, 11.5]
   preview:
     - name: board
     - name: keycaps
@@ -447,6 +671,55 @@ outlines:
       operation: subtract
     - name: cover-simple
       operation: stack
+cases:
+  _holes:
+    - name: caseHoles
+      extrude: 1.5
+  _caseCutoutPower:
+    - name: caseCutoutPower
+      extrude: 6
+  _caseCutoutReset:
+    - name: caseCutoutReset
+      extrude: 6
+  _caseCutoutUsbC:
+    - name: caseCutoutUsbC
+      extrude: 6
+      shift: [0, 0, 6]
+  _bottom:
+    - name: caseInner
+      extrude: 1
+  _outerWall:
+    - name: caseOuter
+      extrude: 9.5
+  _innerWall:
+    - name: caseInner
+      extrude: 9.5
+  _wall:
+    - what: case
+      name: _outerWall
+      operation: add
+    - what: case
+      name: _innerWall
+      operation: subtract
+  Case:
+    - what: case
+      name: _bottom
+      operation: add
+    - what: case
+      name: _wall
+      operation: add
+    - what: case
+      name: _holes
+      operation: subtract
+    - what: case
+      name: _caseCutoutPower
+      operation: subtract
+    - what: case
+      name: _caseCutoutReset
+      operation: subtract
+    - what: case
+      name: _caseCutoutUsbC
+      operation: subtract
 pcbs:
   raveniung-board:
     template: kicad8
