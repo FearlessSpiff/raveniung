@@ -755,11 +755,11 @@ pcbs:
         params:
           reverse_mount: true
           show_silk_labels_on_both_sides: true
-          P0: MISO # White (008)
-          P1: SCK # Black (006)
-          P2: CS # Blue (017)
-          P3: DR # Green (020)
-          P4: MOSI # Red (022)
+          P0: NRST # Black (008)
+          P1: RDY # Green (006)
+          P2: SDA # White (017)
+          P3: SCL # Blue (020)
+          P4: ""
           P5: COL0
           P6: COL1
           P7: COL2
@@ -776,16 +776,15 @@ pcbs:
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [0, -7.6]
-      ffc-12pin:
-        what: FearlessSpiff/connector_ffc_12p_0_5mm
+      ffc-6pin:
+        what: FearlessSpiff/connector_ffc_6p_0_5mm
         params:
-          P1: SCK # Black
-          P2: MISO # White
-          P3: CS # Blue
-          P4: DR # Green
-          P5: MOSI # Red
-          P11: GND
-          P12: VCC
+          P1: RDY # Green
+          P2: NRST # Black
+          P3: GND
+          P4: VCC
+          P5: SCL # Blue
+          P6: SDA # White
         where:
           ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
           shift: [0, -14.5]
@@ -793,6 +792,7 @@ pcbs:
         what: ceoloide/power_switch_smd_side
         params:
           side: B
+          invert_behavior: true
         where:
           ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
           shift: [14.9, 7.1]
