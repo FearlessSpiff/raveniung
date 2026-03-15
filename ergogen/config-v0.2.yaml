@@ -501,7 +501,6 @@ outlines:
           shift: [P+caseInner, -P-caseInner]
         - ref: matrix_outer_bottom
           shift: [-P-caseInner, -P-caseInner]
-
   mcu-top-cutout:
     - what: rectangle
       size: [48, 70]
@@ -509,29 +508,27 @@ outlines:
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -3]
-  cirque-case:
-    - what: circle
-      radius: 24
-      where:
-        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [0, -15]
-  touchpadInner:
+  touchpadCaseInner:
     - what: rectangle
       size: [51, 67]
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -9]
-  touchpadOuter:
+  touchpadCaseOuter:
     - what: rectangle
       size: [51+caseOuter, 67+caseOuter]
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -9]
+  touchpadCaseHoles:
+    - what: circle
+      radius: caseHoleRadius
+      where: /.*standoff.*/
   touchpadCasePreview:
-    - name: touchpadOuter
-    - name: touchpadInner
+    - name: touchpadCaseOuter
+    - name: touchpadCaseInner
       operation: subtract
     - what: circle
       radius: 1
@@ -623,7 +620,7 @@ outlines:
     - name: mcu-top-cutout
       operation: stack
 cases:
-  _holes:
+  _caseHoles:
     - name: caseHoles
       extrude: 1.5
   _caseCutoutPower:
@@ -636,31 +633,31 @@ cases:
     - name: caseCutoutUsbC
       extrude: 6
       shift: [0, 0, 6]
-  _bottom:
+  _caseBottom:
     - name: caseInner
       extrude: 1
-  _outerWall:
+  _caseOuterWall:
     - name: caseOuter
       extrude: 9.5
-  _innerWall:
+  _caseInnerWall:
     - name: caseInner
       extrude: 9.5
-  _wall:
+  _caseWall:
     - what: case
-      name: _outerWall
+      name: _caseOuterWall
       operation: add
     - what: case
-      name: _innerWall
+      name: _caseInnerWall
       operation: subtract
   Case:
     - what: case
-      name: _bottom
+      name: _caseBottom
       operation: add
     - what: case
-      name: _wall
+      name: _caseWall
       operation: add
     - what: case
-      name: _holes
+      name: _caseHoles
       operation: subtract
     - what: case
       name: _caseCutoutPower
@@ -670,6 +667,36 @@ cases:
       operation: subtract
     - what: case
       name: _caseCutoutUsbC
+      operation: subtract
+
+  _touchpadCaseHoles:
+    - name: touchpadCaseHoles
+      extrude: 1.5
+  _touchpadCaseBottom:
+    - name: touchpadCaseInner
+      extrude: 1
+  _touchpadCaseOuterWall:
+    - name: touchpadCaseOuter
+      extrude: 5
+  _touchpadCaseInnerWall:
+    - name: touchpadCaseInner
+      extrude: 5
+  _touchpadCaseWall:
+    - what: case
+      name: _touchpadCaseOuterWall
+      operation: add
+    - what: case
+      name: _touchpadCaseInnerWall
+      operation: subtract
+  TouchpadCase:
+    - what: case
+      name: _touchpadCaseBottom
+      operation: add
+    - what: case
+      name: _touchpadCaseWall
+      operation: add
+    - what: case
+      name: _touchpadCaseHoles
       operation: subtract
 pcbs:
   raveniung-board:
