@@ -41,7 +41,7 @@ ergogen .
 or for building including the left case:
 
 ```bash
-ergogen . && npx @jscad/cli@1 output/cases/LeftCase.jscad -of stla
+ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla
 ```
 
 ### TODO
