@@ -93,7 +93,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_home
-        shift: [15, 9]
+        shift: [22, 9]
       key:
         name: standoff-top
         width: 1
@@ -102,7 +102,7 @@ points:
       mirror: *mirror
       anchor:
         ref: matrix_inner_bottom
-        shift: [15, -8]
+        shift: [28.5, -8]
       key:
         name: standoff-bottom
         width: 1
@@ -503,74 +503,41 @@ outlines:
           shift: [-P-caseInner, -P-caseInner]
 
   mcu-top-cutout:
-    - what: polygon
-      operation: stack
-      fillet: 3
-      points:
-        - ref: matrix_inner_top
-          shift: [P, U]
-        - ref: mirror_matrix_inner_top
-          shift: [P, U]
-        - ref: mirror_matrix_inner_bottom
-          shift: [P, -1.1P]
-        - ref: matrix_inner_bottom
-          shift: [P, -1.1P]
-        - ref: matrix_inner_top
-          shift: [P, U]
+    - what: rectangle
+      size: [48, 70]
+      corner: 2.5
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -3]
   cirque-case:
     - what: circle
       radius: 24
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -15]
-  coverTouchpadInner:
+  touchpadInner:
     - what: rectangle
       size: [51, 67]
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -9]
-  coverTouchpadOuter:
+  touchpadOuter:
     - what: rectangle
       size: [51+caseOuter, 67+caseOuter]
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -9]
-  coverTouchpadPreview:
-    - name: coverTouchpadOuter
-    - name: coverTouchpadInner
+  touchpadCasePreview:
+    - name: touchpadOuter
+    - name: touchpadInner
       operation: subtract
-
-  cover:
-    - what: polygon
-      operation: stack
-      fillet: 3
-      points:
-        - ref: matrix_inner_top
-          shift: [P, P]
-        - ref: mirror_matrix_inner_top
-          shift: [P, P]
-        - ref: mirror_matrix_inner_home
-          shift: [P, 0]
-        - ref: mirror_matrix_inner_bottom
-          shift: [P, -1.2P]
-        - ref: mirror_thumbs_inner_thumb
-          shift: [1P, P]
-        - ref: thumbs_inner_thumb
-          shift: [1P, P]
-        - ref: matrix_inner_bottom
-          shift: [P, -1.2P]
-        - ref: matrix_inner_bottom
-          shift: [P, 0]
-        - ref: matrix_inner_home
-          shift: [P, 0]
-    #- name: cirque-case
-    #  operation: stack
     - what: circle
       radius: 1
       where: /.*standoff.*/
-      operation: subtract
+      operation: add
+
   top-plate:
     - name: board
     - name: keys
@@ -651,9 +618,9 @@ outlines:
     - name: board
     - name: keycaps
       operation: subtract
-    - name: cover
+    - name: touchpadCasePreview
       operation: stack
-    - name: coverTouchpadPreview
+    - name: mcu-top-cutout
       operation: stack
 cases:
   _holes:
