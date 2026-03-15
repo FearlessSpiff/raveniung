@@ -14,7 +14,7 @@ points:
       mirror: &mirror
         ref: matrix_inner_home
         shift: [0, -U]
-        distance: 74
+        distance: 91
       columns:
         outer:
           key:
@@ -71,7 +71,7 @@ points:
       mirror: &mirror
         ref: matrix_inner_home
         shift: [0, -U]
-        distance: 74
+        distance: 91
       columns:
         inner:
           key:
@@ -523,38 +523,26 @@ outlines:
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -15]
-  cover:
-    - what: polygon
-      operation: stack
-      fillet: 3
-      points:
-        - ref: matrix_inner_top
-          shift: [P, P]
-        - ref: mirror_matrix_inner_top
-          shift: [P, P]
-        - ref: mirror_matrix_inner_home
-          shift: [P, 0]
-        - ref: mirror_matrix_inner_bottom
-          shift: [P, -1.2P]
-        - ref: mirror_thumbs_inner_thumb
-          shift: [1P, P]
-        - ref: mirror_thumbs_inner_thumb
-          shift: [P, -0.8P]
-        - ref: thumbs_inner_thumb
-          shift: [P, -0.8P]
-        - ref: thumbs_inner_thumb
-          shift: [1P, P]
-        - ref: matrix_inner_bottom
-          shift: [P, -1.2P]
-        - ref: matrix_inner_bottom
-          shift: [P, 0]
-        - ref: matrix_inner_home
-          shift: [P, 0]
-    - what: circle
-      radius: 1
-      where: /.*standoff.*/
+  coverTouchpadInner:
+    - what: rectangle
+      size: [51, 67]
+      corner: 2.5
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -9]
+  coverTouchpadOuter:
+    - what: rectangle
+      size: [51+caseOuter, 67+caseOuter]
+      corner: 2.5
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -9]
+  coverTouchpadPreview:
+    - name: coverTouchpadOuter
+    - name: coverTouchpadInner
       operation: subtract
-  cover-simple:
+
+  cover:
     - what: polygon
       operation: stack
       fillet: 3
@@ -665,11 +653,7 @@ outlines:
       operation: subtract
     - name: cover
       operation: stack
-  preview-simple:
-    - name: board
-    - name: keycaps
-      operation: subtract
-    - name: cover-simple
+    - name: coverTouchpadPreview
       operation: stack
 cases:
   _holes:
