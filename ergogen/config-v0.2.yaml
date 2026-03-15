@@ -526,14 +526,18 @@ outlines:
     - what: circle
       radius: caseHoleRadius
       where: /.*standoff.*/
+  touchpadCaseFfcHole:
+    - what: rectangle
+      size: [7, 2]
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -20]
   touchpadCasePreview:
     - name: touchpadCaseOuter
     - name: touchpadCaseInner
       operation: subtract
-    - what: circle
-      radius: 1
-      where: /.*standoff.*/
-      operation: add
+    - name: touchpadCaseHoles
+    - name: touchpadCaseFfcHole
 
   top-plate:
     - name: board
@@ -672,6 +676,9 @@ cases:
   _touchpadCaseHoles:
     - name: touchpadCaseHoles
       extrude: 1.5
+  _touchpadCaseFfcHole:
+    - name: touchpadCaseFfcHole
+      extrude: 1.5
   _touchpadCaseBottom:
     - name: touchpadCaseInner
       extrude: 1
@@ -697,6 +704,9 @@ cases:
       operation: add
     - what: case
       name: _touchpadCaseHoles
+      operation: subtract
+    - what: case
+      name: _touchpadCaseFfcHole
       operation: subtract
 pcbs:
   raveniung-board:
