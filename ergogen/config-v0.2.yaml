@@ -514,14 +514,14 @@ outlines:
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [0, -9]
+        shift: [0, -7]
   touchpadCaseOuter:
     - what: rectangle
       size: [51+caseOuter, 67+caseOuter]
       corner: 2.5
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [0, -9]
+        shift: [0, -7]
   touchpadCaseHoles:
     - what: circle
       radius: caseHoleRadius
@@ -531,7 +531,7 @@ outlines:
       size: [7, 2]
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
-        shift: [0, -20]
+        shift: [0, -35]
   touchpadCasePreview:
     - name: touchpadCaseOuter
     - name: touchpadCaseInner
@@ -620,8 +620,6 @@ outlines:
     - name: keycaps
       operation: subtract
     - name: touchpadCasePreview
-      operation: stack
-    - name: mcu-top-cutout
       operation: stack
 cases:
   _caseHoles:
