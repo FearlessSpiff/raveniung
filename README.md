@@ -38,10 +38,10 @@ cp config-v0.2.yaml config.yaml
 ergogen .
 ```
 
-or for building including the left case:
+or for building including the cases:
 
 ```bash
-ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla
+ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla && npx @jscad/cli@1 output/cases/TouchpadCase.jscad -of stla
 ```
 
 ### TODO
@@ -54,6 +54,7 @@ ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla
 ## Notes
 
 * mirror right case!
+* Mount TPS65 so that FFC connector is further away from PCB connector. On left side when looking from bottom
 
 ### Laser cutting (CR-Falcon Laser 10W)
 
