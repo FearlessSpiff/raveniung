@@ -46,15 +46,12 @@ ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla && npx @jscad/cli
 
 ### TODO
 
-* Add and route I2C FPC connector
-* Verify change switch on/off direction -> Check on printed PCB
-* Design new case for Azoteq TPS65
-* Finish and measur 6pin ffc connector
-
 ## Notes
 
-* mirror right case!
 * Mount TPS65 so that FFC connector is further away from PCB connector. On left side when looking from bottom
+* Use straight FFC cable (both blues on same side)
+* Ply 90 degrees in the middle of the touchpad PCB
+* Use FFC connector with connections on bottom (Verify before soldering!)
 
 ### Laser cutting (CR-Falcon Laser 10W)
 
