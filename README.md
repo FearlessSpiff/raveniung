@@ -59,6 +59,18 @@ ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla && npx @jscad/cli
 
 * Outline and switch holes: Cut 2 times with 5mm/s 90% power
 * M2 holes: Cut 2 times with 5mm/s 100% power
+* Kerf Switch-Holes: 0mm
+* Kerf für Rand: +0.2mm
+
+#### Acryl 3mm
+
+* Kerf Switch-Holes: -0.15mm
+* Kerf Rand: +0.2mm
+
+#### For 3d printed  case and laser cut case
+
+* top-foam-plate: 1mm thick, cut 15mm/s 90%
+* bottom-foam-plate: 3mm thick, cut 12mm/s 90% 2 passes
 
 ### Measurements
 
