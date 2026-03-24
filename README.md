@@ -57,10 +57,8 @@ ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla && npx @jscad/cli
 
 #### Flux Oak Wood 3mm
 
-* Outline and switch holes: Cut 2 times with 4mm/s 100% power
-* M2 holes: Cut 2 times with 4mm/s 100% power
-* Kerf Switch-Holes: 0mm
-* Kerf für Rand: +0.2mm
+* Cut 3 times with 4mm/s 90% constant power
+* Kerf: +0.1mm
 
 #### Acryl 3mm
 
