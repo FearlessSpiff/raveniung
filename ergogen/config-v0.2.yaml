@@ -522,13 +522,27 @@ outlines:
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -7]
+  touchpadCaseStandoffInner:
+    - what: rectangle
+      size: [48, 64]
+      corner: 2.5
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -7]
+  touchpadCaseStandoffOuter:
+    - what: rectangle
+      size: [50, 66]
+      corner: 2.5
+      where:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -7]
   touchpadCaseHoles:
     - what: circle
       radius: caseHoleRadius
       where: /.*standoff.*/
   touchpadCaseFfcHole:
     - what: rectangle
-      size: [7, 2]
+      size: [8, 3]
       where:
         ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
         shift: [0, -35]
@@ -682,9 +696,15 @@ cases:
       extrude: 1
   _touchpadCaseOuterWall:
     - name: touchpadCaseOuter
-      extrude: 5
+      extrude: 9
   _touchpadCaseInnerWall:
     - name: touchpadCaseInner
+      extrude: 9
+  _touchpadCaseStandoffOuterWall:
+    - name: touchpadCaseStandoffOuter
+      extrude: 5
+  _touchpadCaseStandoffInnerWall:
+    - name: touchpadCaseStandoffInner
       extrude: 5
   _touchpadCaseWall:
     - what: case
@@ -693,12 +713,22 @@ cases:
     - what: case
       name: _touchpadCaseInnerWall
       operation: subtract
+  _touchpadCaseStandoffWall:
+    - what: case
+      name: _touchpadCaseStandoffOuterWall
+      operation: add
+    - what: case
+      name: _touchpadCaseStandoffInnerWall
+      operation: subtract
   TouchpadCase:
     - what: case
       name: _touchpadCaseBottom
       operation: add
     - what: case
       name: _touchpadCaseWall
+      operation: add
+    - what: case
+      name: _touchpadCaseStandoffWall
       operation: add
     - what: case
       name: _touchpadCaseHoles

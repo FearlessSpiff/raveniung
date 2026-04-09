@@ -52,6 +52,7 @@ ergogen . && npx @jscad/cli@1 output/cases/Case.jscad -of stla && npx @jscad/cli
 * Use straight FFC cable (both blues on same side)
 * Ply 90 degrees in the middle of the touchpad PCB
 * Use FFC connector with connections on bottom (Verify before soldering!)
+* For V2 use 8mm standoffs for the touchpad to make it look neater
 
 ### Laser cutting (CR-Falcon Laser 10W)
 
