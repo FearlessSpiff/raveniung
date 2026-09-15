@@ -169,6 +169,77 @@ points:
         name: mcu-solder-points
         width: 1
         height: 1
+    bumpon-ring-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_ring_top
+        shift: [-7, 7]
+      key:
+        name: bumpon-ring-top
+        width: 1
+        height: 1
+    bumpon-middle-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_middle_top
+        shift: [0, 7]
+      key:
+        name: bumpon-middle-top
+        width: 1
+        height: 1
+    bumpon-outer-home:
+      mirror: *mirror
+      anchor:
+        ref: matrix_outer_home
+        shift: [-7, 7]
+      key:
+        name: bumpon-outer-home
+        width: 1
+        height: 1
+    bumpon-outer-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_outer_bottom
+        shift: [-7, -7]
+      key:
+        name: bumpon-outer-bottom
+        width: 1
+        height: 1
+    bumpon-middle-bottom:
+      mirror: *mirror
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [0, -7]
+      key:
+        name: bumpon-middle-bottom
+        width: 1
+        height: 1
+    bumpon-inner-top:
+      mirror: *mirror
+      anchor:
+        ref: matrix_inner_top
+        shift: [0, 7]
+      key:
+        name: bumpon-inner-top
+        width: 1
+        height: 1
+    bumpon-center:
+      anchor:
+        ref.aggregate.parts: [matrix_inner_home, mirror_matrix_inner_home]
+        shift: [0, -10]
+      key:
+        name: bumpon-center
+        width: 1
+        height: 1
+    bumpon-inner-thumb:
+      mirror: *mirror
+      anchor:
+        ref: thumbs_inner_thumb
+        shift: [0, -7]
+      key:
+        name: bumpon-inner-thumb
+        width: 1
+        height: 1
     power-switch-footprint:
       anchor:
         ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
@@ -629,6 +700,50 @@ outlines:
       where:
         ref.aggregate.parts: [matrix_inner_top, mirror_matrix_inner_top]
         shift: [0, 11.5]
+  caseCutoutPowerLP:
+    - what: rectangle
+      size: [10, 7.5]
+      where:
+        - ref: power-switch-footprint
+          shift: [0, 2.8]
+  caseCutoutResetLP:
+    - what: rectangle
+      size: [6, 7.5]
+      where:
+        - ref: reset-switch-footprint
+          shift: [0, 2.8]
+  caseSinkMcu:
+    - what: rectangle
+      where: mcu-solder-points
+      size: [4, 34.28]
+      adjust:
+        shift: [0, -0.86]
+    - what: rectangle
+      where: mirror_mcu-solder-points
+      size: [4, 34.28]
+      adjust:
+        shift: [0, -0.86]
+      operation: add
+  caseSinkKeysDiodes:
+    - name: keys-diodes-solder
+  caseSinkStandoff:
+    - what: circle
+      radius: 2.2
+      where: /.*standoff.*/
+  caseHolesNutSink:
+    - what: polygon
+      where: /.*mount-hole.*/
+      points:
+        - shift: [2.5, 0]
+        - shift: [-1.25, 2.17]
+        - shift: [-2.5, 0]
+        - shift: [-1.25, -2.17]
+        - shift: [1.25, -2.17]
+        - shift: [2.5, 0]
+  caseHolesBumpon:
+    - what: circle
+      radius: 3.15
+      where: /.*bumpon-.*/
   preview:
     - name: board
     - name: keycaps
@@ -683,6 +798,86 @@ cases:
       operation: subtract
     - what: case
       name: _caseCutoutUsbC
+      operation: subtract
+
+  _caseCutoutPowerLP:
+    - name: caseCutoutPowerLP
+      extrude: 6
+  _caseCutoutResetLP:
+    - name: caseCutoutResetLP
+      extrude: 6
+  _caseSinkKeysDiodes:
+    - name: caseSinkKeysDiodes
+      extrude: 6
+  _caseSinkMcu:
+    - name: caseSinkMcu
+      extrude: 6
+  _caseSinkStandoff:
+    - name: caseSinkStandoff
+      extrude: 6
+  _caseHolesLP:
+    - name: caseHoles
+      extrude: 3.5
+  _caseHolesNutSink:
+    - name: caseHolesNutSink
+      extrude: 2
+  _caseHolesBumpon:
+    - name: caseHolesBumpon
+      extrude: 0.7
+  _caseBottomLP:
+    - name: caseInner
+      extrude: 3
+  _caseOuterWallLP:
+    - name: caseOuter
+      extrude: 8.5
+  _caseInnerWallLP:
+    - name: caseInner
+      extrude: 8.5
+  _caseWallLP:
+    - what: case
+      name: _caseOuterWallLP
+      operation: add
+    - what: case
+      name: _caseInnerWallLP
+      operation: subtract
+  CaseLP:
+    - what: case
+      name: _caseBottomLP
+      operation: add
+    - what: case
+      name: _caseWallLP
+      operation: add
+    - what: case
+      name: _caseHolesLP
+      operation: subtract
+    - what: case
+      name: _caseHolesNutSink
+      operation: subtract
+    - what: case
+      name: _caseCutoutPowerLP
+      operation: subtract
+      shift: [0, -1.5, 0]
+    - what: case
+      name: _caseCutoutResetLP
+      operation: subtract
+      shift: [0, -1.5, 0]
+    - what: case
+      name: _caseCutoutUsbC
+      operation: subtract
+    - what: case
+      name: _caseSinkKeysDiodes
+      operation: subtract
+      shift: [0, 0, 1]
+    - what: case
+      name: _caseSinkMcu
+      operation: subtract
+      shift: [0, 0, 1.2]
+    - what: case
+      name: _caseSinkStandoff
+      operation: subtract
+      shift: [0, 0, 1]
+    - what: case
+      name: _caseHolesBumpon
       operation: subtract
 
   _touchpadCaseHoles:
