@@ -702,13 +702,13 @@ outlines:
         shift: [0, 11.5]
   caseCutoutPowerLP:
     - what: rectangle
-      size: [10, 7.5]
+      size: [12, 7.5]
       where:
         - ref: power-switch-footprint
-          shift: [0, 2.8]
+          shift: [1.5, 2.8]
   caseCutoutResetLP:
     - what: rectangle
-      size: [6, 7.5]
+      size: [9, 7.5]
       where:
         - ref: reset-switch-footprint
           shift: [0, 2.8]
@@ -1053,3 +1053,4 @@ pcbs:
         where:
           ref.aggregate.parts: [thumbs_inner_thumb, mirror_thumbs_inner_thumb]
           shift: [0, -12]
+
