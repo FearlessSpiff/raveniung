@@ -1,8 +1,8 @@
 units:
   angle: -10
   P: 0.6U
-  caseOuter: 1.9
-  caseInner: 0.3
+  caseOuter: 1.8
+  caseInner: 0.6
   caseHoleRadius: 1.2
 points:
   zones:
@@ -856,11 +856,11 @@ cases:
     - what: case
       name: _caseCutoutPowerLP
       operation: subtract
-      shift: [0, -1.5, 0]
+      shift: [-0.5, -0.5, 0]
     - what: case
       name: _caseCutoutResetLP
       operation: subtract
-      shift: [0, -1.5, 0]
+      shift: [0, -0.5, 0]
     - what: case
       name: _caseCutoutUsbC
       operation: subtract
@@ -1053,4 +1053,3 @@ pcbs:
         where:
           ref.aggregate.parts: [thumbs_inner_thumb, mirror_thumbs_inner_thumb]
           shift: [0, -12]
-
